@@ -13,13 +13,15 @@ public class Player : MonoBehaviour {
     void Start()
     {
         startingPosition = transform.position;
+        GetComponent<ParticleSpawner>().SpawnResetParticles(transform.position);
     }
 
     void Update()
     {
         if (transform.position.y < -20)
         {
-            transform.position = startingPosition; 
+            transform.position = startingPosition;
+            GetComponent<ParticleSpawner>().SpawnResetParticles(transform.position);
         }
     }
 
@@ -28,7 +30,7 @@ public class Player : MonoBehaviour {
         if (c.gameObject.tag == "Pickup")
         {
             gameScript.PickupCollected();
-            Debug.Log("Picked up");
+            GetComponent<ParticleSpawner>().SpawnStarParticles(transform.position);
             Destroy(c.gameObject);
         }
     }

@@ -95,6 +95,6 @@ public class PlaneController : MonoBehaviour
             rotation *= Quaternion.AngleAxis(axis.GetZRotation() * SpeedRotation * Time.deltaTime, Vector3.up);
         */
 
-        cube.eulerAngles = new Vector3(axis.GetPhysicalPitch(), axis.GetPhysicalYaw(), axis.GetPhysicalRoll() * -1) * SpeedRotation;
+        cube.eulerAngles = new Vector3(axis.GetPhysicalPitch() * 0.5f, axis.GetPhysicalYaw() * 0.5f, axis.GetPhysicalRoll() * -0.5f) * SpeedRotation;
     }
 }

@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
 
     void OnGUI()
     {
-        string newString = "Connected: " + transform.rotation.x + ", " + transform.rotation.y + ", " + transform.rotation.z;
+        //string newString = "Connected: " + transform.rotation.x + ", " + transform.rotation.y + ", " + transform.rotation.z;
         //string newString = "Connected: " + value;
        // GUI.Label(new Rect(10, 10, 300, 100), newString); //Display new values
         // Though, it seems that it outputs the value in percentage O-o I don't know why
