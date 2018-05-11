@@ -11,6 +11,9 @@ public class ParticleSpawner : MonoBehaviour {
     [SerializeField]
     private GameObject resetParticles;
 
+    [SerializeField]
+    private GameObject badParticles;
+
     // Spawn star effect at given position
     public void SpawnStarParticles(Vector3 position)
     {
@@ -21,5 +24,11 @@ public class ParticleSpawner : MonoBehaviour {
     public void SpawnResetParticles(Vector3 position)
     {
         Instantiate(resetParticles, position, Quaternion.identity);
+    }
+
+    // Spawn reset effect at given position
+    public void SpawnBadParticles(Vector3 position)
+    {
+        Instantiate(badParticles, position, Quaternion.identity);
     }
 }

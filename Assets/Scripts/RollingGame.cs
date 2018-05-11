@@ -92,6 +92,15 @@ public class RollingGame : MonoBehaviour {
         numPickupsCollected++;
         gameScore = gameScore + 100f;
         feedbackCanvas.UpdateScoreText(gameScore);
+        GetComponent<SoundEffectPlayer>().PlayHappySound();
+    }
+
+    // You got a BAD pickup, decrease score.
+    public void BadPickupCollected()
+    {
+        gameScore = gameScore - 10f;
+        feedbackCanvas.UpdateScoreText(gameScore);
+        GetComponent<SoundEffectPlayer>().PlayBadSound();
     }
 
     // The ball fell out of bounds. Decrease score.
@@ -99,6 +108,7 @@ public class RollingGame : MonoBehaviour {
     {
         gameScore = gameScore - 10f;
         feedbackCanvas.UpdateScoreText(gameScore);
+        GetComponent<SoundEffectPlayer>().PlayResetSound();
     }
 
     // The game just ended. won = Did the player win?

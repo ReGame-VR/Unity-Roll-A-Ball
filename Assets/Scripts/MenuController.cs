@@ -10,6 +10,12 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class MenuController : MonoBehaviour {
 
+    void Start()
+    {
+        RecordTimeLimit(0);
+        RecordLevelNumber(0);
+    }
+
     /// <summary>
     /// Records an alphanumeric participant ID. Hit enter to record. May be entered multiple times
     /// but only last submission is used. Called using a dynamic function in the inspector

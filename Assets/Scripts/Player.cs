@@ -52,6 +52,12 @@ public class Player : MonoBehaviour {
             GetComponent<ParticleSpawner>().SpawnStarParticles(transform.position);
             Destroy(c.gameObject);
         }
+        else if (c.gameObject.tag == "Bad Pickup")
+        {
+            gameScript.BadPickupCollected();
+            GetComponent<ParticleSpawner>().SpawnBadParticles(transform.position);
+            Destroy(c.gameObject);
+        }
     }
 
     // Freeze the ball from moving
