@@ -25,9 +25,9 @@ public class DataHandler : MonoBehaviour
     }
 
     // Records trial data into the data list
-    public void recordTrial(float score, int numPickups, float timeRemaining, bool won)
+    public void recordTrial(float score, int numPickups, int numBadPickups, int numFalls, float timeRemaining, bool won)
     {
-        trialData.Add(new TrialData(score, numPickups, timeRemaining, won));
+        trialData.Add(new TrialData(score, numPickups, numBadPickups, numFalls, timeRemaining, won));
     }
 
     /// <summary>
@@ -39,13 +39,17 @@ public class DataHandler : MonoBehaviour
     {
         public readonly float score;
         public readonly int numPickups;
+        public readonly int numBadPickups;
+        public readonly int numFalls;
         public readonly float timeRemaining;
         public readonly bool won;
 
-        public TrialData(float score, int numPickups, float timeRemaining, bool won)
+        public TrialData(float score, int numPickups, int numBadPickups, int numFalls, float timeRemaining, bool won)
         {
             this.score = score;
             this.numPickups = numPickups;
+            this.numBadPickups = numBadPickups;
+            this.numFalls = numFalls;
             this.timeRemaining = timeRemaining;
             this.won = won;
         }
@@ -66,9 +70,11 @@ public class DataHandler : MonoBehaviour
             // write header
             CsvRow header = new CsvRow();
             header.Add("Participant ID");
-            header.Add("Try Number");
+            header.Add("Trial Number");
             header.Add("Score");
-            header.Add("Number Pickups Collected");
+            header.Add("Number of Pickups Collected");
+            header.Add("Number of Bad Pickups Collected");
+            header.Add("Number of Falls");
             header.Add("Time remaining (seconds)");
             header.Add("Total time (seconds)");
             header.Add("Level Difficulty");
@@ -85,6 +91,8 @@ public class DataHandler : MonoBehaviour
                 row.Add(tryNum);
                 row.Add(d.score.ToString());
                 row.Add(d.numPickups.ToString());
+                row.Add(d.numBadPickups.ToString());
+                row.Add(d.numFalls.ToString());
                 row.Add(d.timeRemaining.ToString());
                 row.Add(GlobalControl.Instance.timeLimit.ToString());
                 row.Add(GlobalControl.Instance.levelNumber.ToString());

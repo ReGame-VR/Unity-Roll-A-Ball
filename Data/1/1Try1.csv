@@ -1,2 +1,2 @@
-Participant ID,Try Number,Score,Number Pickups Collected,Time remaining (seconds),Total time (seconds),Level Difficulty,Game won?
-1,1,350,4,104.1969,180,1,YES
+Participant ID,Try Number,Score,Number of Pickups Collected,Number of Bad Pickups Collected,Number of Falls,Time remaining (seconds),Total time (seconds),Level Difficulty,Game won?
+1,1,500,6,5,5,12.038,120,2,YES

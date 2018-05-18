@@ -35,8 +35,12 @@ public class RollingGame : MonoBehaviour {
     // The current score of the player in the game
     private float gameScore = 0f;
 
-	// Use this for initialization
-	void Start () {
+    // Number of errors that the user made
+    private int numBadPickupsCollected = 0;
+    private int numFalls = 0;
+
+    // Use this for initialization
+    void Start () {
         curGameState = GameState.PRE_GAME;
         player.GetComponent<Player>().FreezePlayer();
         feedbackCanvas.UpdateScoreText(gameScore);
@@ -98,6 +102,7 @@ public class RollingGame : MonoBehaviour {
     // You got a BAD pickup, decrease score.
     public void BadPickupCollected()
     {
+        numBadPickupsCollected++;
         gameScore = gameScore - 10f;
         feedbackCanvas.UpdateScoreText(gameScore);
         GetComponent<SoundEffectPlayer>().PlayBadSound();
@@ -106,6 +111,7 @@ public class RollingGame : MonoBehaviour {
     // The ball fell out of bounds. Decrease score.
     public void BallOutOfBounds()
     {
+        numFalls++;
         gameScore = gameScore - 10f;
         feedbackCanvas.UpdateScoreText(gameScore);
         GetComponent<SoundEffectPlayer>().PlayResetSound();
@@ -117,6 +123,6 @@ public class RollingGame : MonoBehaviour {
         player.GetComponent<Player>().FreezePlayer();
         curGameState = GameState.POST_GAME;
         feedbackCanvas.DisplayWinText(gameScore);
-        GetComponent<DataHandler>().recordTrial(gameScore, numPickupsCollected, timeLeft, won);
+        GetComponent<DataHandler>().recordTrial(gameScore, numPickupsCollected, numBadPickupsCollected, numFalls, timeLeft, won);
     }
 }

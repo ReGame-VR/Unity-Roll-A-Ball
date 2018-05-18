@@ -1684,7 +1684,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Try #'
+  m_Text: 'Trial #'
 --- !u!222 &876013286
 CanvasRenderer:
   m_ObjectHideFlags: 0
